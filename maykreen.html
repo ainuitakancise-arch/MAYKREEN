@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>maykreen [MAYKscREEN] | SILKSCREEN STUDIO SAPPORO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            washi: '#F7F5F0',
+            washiSoft: '#EFECE3',
+            sumi: '#1C2536',
+            indigoInk: '#2B4C7E',
+            vermilion: '#C83C2B',
+            borderBeige: '#DFD9CC',
+            cedar: '#8B5E34',
+            cedarLight: '#B4885E',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            serif: ['"Noto Serif JP"', 'serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 和紙風オフホワイト背景と繊細な質感 */
+    body {
+      background-color: #F7F5F0;
+      background-image:
+        radial-gradient(rgba(28, 37, 54, 0.035) 1px, transparent 0),
+        radial-gradient(rgba(139, 94, 52, 0.04) 1px, transparent 0);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+      color: #1C2536;
+    }
+
+    /* A4印刷用レイアウト */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #1C2536 !important;
+        font-size: 10px !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-frame {
+        border: 1.5px solid #1C2536 !important;
+        padding: 12px !important;
+        border-radius: 8px !important;
+      }
+      .menu-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #CFC9BC !important;
+        background: #FFFFFF !important;
+      }
+      .menu-section {
+        display: block !important;
+        margin-bottom: 16px !important;
+      }
+    }
+
+    /* カスタムスクロールバー */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #EFECE3;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #8B5E34;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-vermilion selection:text-white">
+
+  <!-- クリップボードコピー完了通知トースト -->
+  <div id="toast-msg" class="fixed bottom-6 right-6 z-50 hidden items-center gap-2.5 bg-sumi text-white px-4 py-3 rounded-xl shadow-lg border border-white/15 text-xs sm:text-sm font-medium transition-all">
+    <svg class="w-4 h-4 text-vermilion shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    <span id="toast-text">予約用メモをクリップボードにコピーしました</span>
+  </div>
+
+  <!-- メインコンテナ -->
+  <div class="print-frame max-w-5xl mx-auto px-4 sm:px-8 py-6 sm:py-10">
+
+    <!-- ヘッダー：和モダン・スタジオアイデンティティ -->
+    <header class="relative bg-white/95 border border-borderBeige rounded-2xl p-6 sm:p-10 shadow-sm mb-6 overflow-hidden">
+      <!-- 背景の繊細な青海波透かし -->
+      <svg class="absolute -bottom-8 -right-8 w-56 h-56 opacity-[0.045] pointer-events-none text-indigoInk" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="2">
+          <circle cx="60" cy="60" r="15"/><circle cx="60" cy="60" r="30"/><circle cx="60" cy="60" r="45"/><circle cx="60" cy="60" r="60"/>
+          <circle cx="15" cy="95" r="15"/><circle cx="15" cy="95" r="30"/><circle cx="15" cy="95" r="45"/>
+          <circle cx="105" cy="95" r="15"/><circle cx="105" cy="95" r="30"/><circle cx="105" cy="95" r="45"/>
+        </g>
+      </svg>
+
+      <div class="flex flex-col items-center text-center relative z-10">
+        <!-- 朱色の青海波落款印 ＋ ブランドロゴ -->
+        <div class="relative inline-flex items-center justify-center mb-1.5">
+          <svg class="w-10 h-10 sm:w-12 sm:h-12 -mr-1.5 -mt-4 shrink-0" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="青海波落款印">
+            <circle cx="32" cy="32" r="30" fill="#C83C2B"/>
+            <circle cx="32" cy="32" r="27.5" stroke="#F7F5F0" stroke-width="0.8" stroke-opacity="0.65"/>
+            <g stroke="#F7F5F0" stroke-width="1.9" fill="none">
+              <path d="M10 38 A12 12 0 0 1 34 38" />
+              <path d="M14 38 A8 8 0 0 1 30 38" />
+              <path d="M18 38 A4 4 0 0 1 26 38" />
+              <path d="M30 38 A12 12 0 0 1 54 38" />
+              <path d="M34 38 A8 8 0 0 1 50 38" />
+              <path d="M38 38 A4 4 0 0 1 46 38" />
+              <path d="M20 48 A12 12 0 0 1 44 48" />
+              <path d="M24 48 A8 8 0 0 1 40 48" />
+              <path d="M28 48 A4 4 0 0 1 36 48" />
+              <path d="M20 26 A12 12 0 0 1 44 26" />
+              <path d="M24 26 A8 8 0 0 1 40 26" />
+              <path d="M28 26 A4 4 0 0 1 36 26" />
+            </g>
+          </svg>
+          <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-sumi">
+            maykreen
+          </h1>
+        </div>
+
+        <!-- サブタイトル [MAYKscREEN] -->
+        <p class="font-display text-sm sm:text-base tracking-[0.18em] text-indigoInk font-bold mb-2">
+          [MAYKscREEN]
+        </p>
+
+        <!-- 柄のないフラットな天然杉材スキージー＆メッシュドットSVG -->
+        <div class="my-2 flex items-center justify-center">
+          <svg class="w-64 sm:w-80 h-auto" viewBox="0 0 340 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="天然杉材フラットスキージー">
+            <rect x="12" y="7" width="168" height="35" rx="4.5" fill="#9A6B3E" stroke="#1C2536" stroke-width="2.2"/>
+            <path d="M13 20 Q96 23.5 179 20" stroke="#1C2536" stroke-width="1.2" stroke-opacity="0.4"/>
+            <path d="M13 28 Q96 25.5 179 28" stroke="#F7F5F0" stroke-width="1" stroke-opacity="0.32"/>
+            <path d="M24 13 C58 11, 92 15, 128 13" stroke="#6E4927" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M34 35 C74 33, 114 37, 156 34" stroke="#6E4927" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="158" cy="22" r="4.6" stroke="#1C2536" stroke-width="1.2"/>
+            <path d="M148 29 Q157 24 167 29" stroke="#1C2536" stroke-width="1.2" fill="none"/>
+            <rect x="18" y="42" width="156" height="12" rx="1.5" fill="#EFECE3" stroke="#1C2536" stroke-width="2.2"/>
+            <line x1="18" y1="49" x2="174" y2="49" stroke="#8B5E34" stroke-width="1"/>
+            <g fill="#2B4C7E" opacity="0.72">
+              <circle cx="194" cy="13" r="1.9"/><circle cx="204" cy="13" r="1.9"/><circle cx="214" cy="13" r="1.9"/><circle cx="224" cy="13" r="1.9"/><circle cx="234" cy="13" r="1.9"/><circle cx="244" cy="13" r="1.9"/><circle cx="254" cy="13" r="1.9"/><circle cx="264" cy="13" r="1.9"/><circle cx="274" cy="13" r="1.9"/><circle cx="284" cy="13" r="1.9"/><circle cx="294" cy="13" r="1.9"/><circle cx="304" cy="13" r="1.9"/><circle cx="314" cy="13" r="1.9"/>
+              <circle cx="199" cy="21" r="1.9"/><circle cx="209" cy="21" r="1.9"/><circle cx="219" cy="21" r="1.9"/><circle cx="229" cy="21" r="1.9"/><circle cx="239" cy="21" r="1.9"/><circle cx="249" cy="21" r="1.9"/><circle cx="259" cy="21" r="1.9"/><circle cx="269" cy="21" r="1.9"/><circle cx="279" cy="21" r="1.9"/><circle cx="289" cy="21" r="1.9"/><circle cx="299" cy="21" r="1.9"/><circle cx="309" cy="21" r="1.9"/><circle cx="319" cy="21" r="1.9"/>
+              <circle cx="194" cy="29" r="1.9"/><circle cx="204" cy="29" r="1.9"/><circle cx="214" cy="29" r="1.9"/><circle cx="224" cy="29" r="1.9"/><circle cx="234" cy="29" r="1.9"/><circle cx="244" cy="29" r="1.9"/><circle cx="254" cy="29" r="1.9"/><circle cx="264" cy="29" r="1.9"/><circle cx="274" cy="29" r="1.9"/><circle cx="284" cy="29" r="1.9"/><circle cx="294" cy="29" r="1.9"/><circle cx="304" cy="29" r="1.9"/><circle cx="314" cy="29" r="1.9"/>
+              <circle cx="199" cy="37" r="1.9"/><circle cx="209" cy="37" r="1.9"/><circle cx="219" cy="37" r="1.9"/><circle cx="229" cy="37" r="1.9"/><circle cx="239" cy="37" r="1.9"/><circle cx="249" cy="37" r="1.9"/><circle cx="259" cy="37" r="1.9"/><circle cx="269" cy="37" r="1.9"/><circle cx="279" cy="37" r="1.9"/><circle cx="289" cy="37" r="1.9"/><circle cx="299" cy="37" r="1.9"/><circle cx="309" cy="37" r="1.9"/><circle cx="319" cy="37" r="1.9"/>
+              <circle cx="194" cy="45" r="1.9"/><circle cx="204" cy="45" r="1.9"/><circle cx="214" cy="45" r="1.9"/><circle cx="224" cy="45" r="1.9"/><circle cx="234" cy="45" r="1.9"/><circle cx="244" cy="45" r="1.9"/><circle cx="254" cy="45" r="1.9"/><circle cx="264" cy="45" r="1.9"/><circle cx="274" cy="45" r="1.9"/><circle cx="284" cy="45" r="1.9"/><circle cx="294" cy="45" r="1.9"/><circle cx="304" cy="45" r="1.9"/><circle cx="314" cy="45" r="1.9"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- タグライン -->
+        <p class="font-serif text-xs sm:text-sm md:text-base font-semibold text-sumi mt-2 tracking-wide">
+          Make・May・My・Screen・Clean — 清潔感と精巧さを大切にするシルクスクリーン工房 <span class="text-indigoInk font-display font-bold">| SAPPORO, HOKKAIDO</span>
+        </p>
+
+        <!-- 不定期営業・完全予約制ステータスバッジ -->
+        <div class="mt-3.5 inline-flex flex-wrap items-center justify-center gap-2 text-xs">
+          <span class="px-3.5 py-1 rounded-full bg-vermilion text-white font-bold shadow-sm">
+            不定期営業・完全予約制
+          </span>
+          <span class="px-3.5 py-1 rounded-full bg-indigoInk/10 text-indigoInk font-semibold border border-indigoInk/20">
+            少人数制（各枠 最大4名・2組まで）
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 上部：重要・必須確認バナー（お持ち込み・体験に関する免責規定） -->
+    <section aria-label="重要・必ずご確認ください：お持ち込み・体験に関する免責規定" class="menu-card bg-white border-2 border-vermilion rounded-2xl p-5 sm:p-6 shadow-sm mb-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3.5 border-b border-vermilion/20">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-1 rounded-md bg-vermilion text-white text-xs font-bold tracking-wider shrink-0">重要・必須確認</span>
+          <h2 class="font-serif text-base sm:text-lg font-bold text-sumi">
+            必ずご確認ください：お持ち込み・体験に関する免責規定
+          </h2>
+        </div>
+        <span class="text-[11px] font-bold text-vermilion">※ご予約時は内容への同意が必要です</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs text-sumi/90 leading-relaxed">
+        <div class="bg-washi rounded-xl p-3.5 border border-borderBeige">
+          <p class="font-bold text-indigoInk mb-1">① お持ち込み可能・不可の素材基準</p>
+          <p>
+            <strong>綿（コットン）100%・キャンバス地</strong>など平らに置ける布製品をお持ち込みいただけます（持ち込み料 ¥0）。<br />
+            <span class="text-vermilion font-semibold">※ナイロン・ポリエステル100%、撥水・防水加工品、ファスナーや極端な段差の真上はお受けできません。</span>
+          </p>
+        </div>
+
+        <div class="bg-washi rounded-xl p-3.5 border border-borderBeige">
+          <p class="font-bold text-vermilion mb-1">② 体験時の仕上がり補償・高額品の持ち込み禁止</p>
+          <p>
+            お客様ご自身で刷る体験では、プリントのズレ・滲み等による<strong>持ち込み品の補償・弁償はいたしかねます</strong>。高額ブランド品や替えのきかない一点物はお持ち込みをご遠慮ください。
+          </p>
+        </div>
+
+        <div class="bg-washi rounded-xl p-3.5 border border-borderBeige">
+          <p class="font-bold text-indigoInk mb-1">③ 失敗時の工房ボディ切り替え対応</p>
+          <p>
+            万が一お持ち込み品で失敗された場合でも、<strong>工房在庫の無地ボディ（サコッシュ ¥500〜 / Tシャツ ¥1,200〜）をその場でご購入いただき刷り直すことが可能</strong>です。
+          </p>
+        </div>
+
+        <div class="bg-washi rounded-xl p-3.5 border border-borderBeige">
+          <p class="font-bold text-indigoInk mb-1">④ 法人・店舗制作（B2B）お預かり時の予備枚数ルール</p>
+          <p>
+            法人・店舗オーダーでお客様側のボディをお預かりする場合、万が一の印刷ロスに備え<strong>予備（ロス分）を1〜2枚多めにご用意</strong>いただくルールとなっております。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上部ナビゲーション（カテゴリー切替タブ＆A4印刷ボタン） -->
+    <nav class="no-print sticky top-3 z-30 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2.5 mb-8 bg-white/95 backdrop-blur-md p-2.5 rounded-2xl border border-borderBeige shadow-sm" aria-label="メニューカテゴリー切替">
+      <div class="flex flex-wrap gap-1.5" role="tablist">
+        <button onclick="filterCategory('all')" id="tab-all" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-sumi text-white shadow-sm">
+          すべて
+        </button>
+        <button onclick="filterCategory('workshop')" id="tab-workshop" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-sumi hover:bg-washiSoft">
+          制作体験 (Workshop)
+        </button>
+        <button onclick="filterCategory('b2b')" id="tab-b2b" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-sumi hover:bg-washiSoft">
+          法人・店舗制作 (B2B)
+        </button>
+        <button onclick="filterCategory('guide')" id="tab-guide" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-sumi hover:bg-washiSoft">
+          予約枠・営業案内
+        </button>
+        <button onclick="jumpToSimulator()" id="tab-simulator" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all text-sumi hover:bg-washiSoft inline-flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-vermilion"></span>
+          料金シミュレーター
+        </button>
+      </div>
+
+      <button onclick="window.print()" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-vermilion text-white text-xs sm:text-sm font-bold hover:bg-vermilion/90 transition shadow-sm shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        A4 印刷レイアウト
+      </button>
+    </nav>
+
+    <main class="space-y-12">
+
+      <!-- =========================================================
+           1. 制作体験 (Workshop)
+      ========================================================== -->
+      <section id="sec-workshop" class="menu-section">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-sumi pb-3 mb-6 gap-1">
+          <div>
+            <span class="font-display text-xs tracking-[0.2em] text-vermilion font-bold uppercase block">01 / WORKSHOP EXPERIENCES</span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-sumi mt-0.5">制作体験 (Workshop)</h2>
+          </div>
+          <span class="text-xs sm:text-sm text-indigoInk font-semibold">手ぶら参加OK・エプロン無料貸出・当日お持ち帰り</span>
+        </div>
+
+        <!-- 明朗会計システム -->
+        <div class="menu-card bg-white rounded-2xl p-5 sm:p-7 border-2 border-sumi/30 shadow-sm mb-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-4 border-b border-borderBeige">
+            <div class="flex items-center gap-2.5">
+              <span class="px-2.5 py-1 rounded bg-vermilion text-white text-xs font-bold shrink-0">明朗会計システム</span>
+              <h3 class="font-serif text-base sm:text-lg font-bold text-sumi">
+                基本版代（¥600 or ¥1,200）＋ プリント代（1色あたり ¥200）＋ 素材代金（持ち込み ¥0 / 工房ボディ別売）
+              </h3>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-5">
+            <div class="bg-washi rounded-xl p-4 border border-borderBeige">
+              <span class="text-xs font-bold text-indigoInk block">① 基本版代（1版あたり）</span>
+              <div class="mt-2 space-y-1.5">
+                <div class="flex items-baseline justify-between">
+                  <span class="text-xs text-sumi/85">既存デザイン版利用</span>
+                  <span class="font-display text-2xl font-bold text-indigoInk">¥600</span>
+                </div>
+                <div class="flex items-baseline justify-between">
+                  <span class="text-xs text-sumi/85">オリジナル製版</span>
+                  <span class="font-display text-2xl font-bold text-vermilion">¥1,200</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-washi rounded-xl p-4 border border-borderBeige">
+              <span class="text-xs font-bold text-indigoInk block">② プリント代（インク・手刷り）</span>
+              <div class="mt-2 flex items-baseline gap-1.5">
+                <span class="font-display text-3xl font-bold text-vermilion">¥200</span>
+                <span class="text-xs font-bold text-sumi">/ 1色あたり（税込）</span>
+              </div>
+              <p class="text-xs text-sumi/75 mt-2">1色 ¥200 ／ 2色 ¥400 ／ 3色 ¥600 ／ 4色 ¥800</p>
+            </div>
+
+            <div class="bg-washi rounded-xl p-4 border border-borderBeige">
+              <span class="text-xs font-bold text-indigoInk block">③ 素材代金（ベースアイテム）</span>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="font-display text-2xl font-bold text-indigoInk">¥0</span>
+                <span class="text-xs text-sumi/80">持ち込み ／ 工房ボディ別売</span>
+              </div>
+              <p class="text-xs text-sumi/75 mt-2">サコッシュ ¥500・トート ¥700・Tシャツ ¥1,200〜</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 体験コースカード -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <!-- クイック刷り体験（既存デザイン版） -->
+          <article class="menu-card bg-white rounded-2xl p-6 border border-borderBeige shadow-sm flex flex-col justify-between hover:border-indigoInk/40 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigoInk/10 text-indigoInk text-xs font-bold">当日1時間前まで予約可</span>
+                <span class="text-xs font-medium text-sumi/75">所要約45〜60分</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-sumi">クイック刷り体験</h3>
+              <p class="font-display text-[11px] tracking-wider text-cedar font-semibold uppercase mb-3">Existing Screen (既存デザイン版利用)</p>
+              <p class="text-sm text-sumi/85 leading-relaxed mb-4">
+                和モダン文様（青海波など）や北海道モチーフのスタジオ常設デザイン版を選び、好きなインク色で気軽に手刷り体験ができます。
+              </p>
+            </div>
+            <div class="pt-4 border-t border-borderBeige">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-sumi/75">基本版代 ＋ 1色あたり¥200</span>
+                <div>
+                  <span class="font-display text-2xl font-bold text-indigoInk">¥600</span>
+                  <span class="text-xs font-bold text-sumi ml-1">+ ¥200/色</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-cedar font-semibold text-right mt-1">※素材代金別（持ち込み ¥0 / 工房ボディ別売）</p>
+            </div>
+          </article>
+
+          <!-- マイデザイン制作コース（オリジナル製版） -->
+          <article class="menu-card bg-white rounded-2xl p-6 border-2 border-vermilion/45 shadow-sm flex flex-col justify-between relative">
+            <div class="absolute -top-3 right-5 bg-vermilion text-white text-[11px] font-bold px-3 py-0.5 rounded-full shadow-sm">
+              一番人気・My Screen
+            </div>
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-sumi text-white text-xs font-bold">前日18時まで要データ入稿</span>
+                <span class="text-xs font-medium text-sumi/75">所要約90〜120分</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-sumi">マイデザイン制作コース</h3>
+              <p class="font-display text-[11px] tracking-wider text-cedar font-semibold uppercase mb-3">Original Screen (オリジナル製版)</p>
+              <p class="text-sm text-sumi/85 leading-relaxed mb-4">
+                描いたイラストや手書き文字・オリジナルロゴを専用の版に製版し、お好みの色数で刷り上げる本格コース。作成した版で複数枚刷ることも可能です。
+              </p>
+            </div>
+            <div class="pt-4 border-t border-borderBeige">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-sumi/75">基本版代 ＋ 1色あたり¥200</span>
+                <div>
+                  <span class="font-display text-2xl font-bold text-vermilion">¥1,200</span>
+                  <span class="text-xs font-bold text-sumi ml-1">+ ¥200/色</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-cedar font-semibold text-right mt-1">※素材代金別（持ち込み ¥0 / 工房ボディ別売）</p>
+            </div>
+          </article>
+
+          <!-- グループ・貸切プラン -->
+          <article class="menu-card bg-white rounded-2xl p-6 border border-borderBeige shadow-sm flex flex-col justify-between hover:border-indigoInk/40 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigoInk/10 text-indigoInk text-xs font-bold">1枠最大4名（貸切相談可）</span>
+                <span class="text-xs font-medium text-sumi/75">所要約2時間</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-sumi">グループ・貸切プラン</h3>
+              <p class="font-display text-[11px] tracking-wider text-cedar font-semibold uppercase mb-3">Group & Private Session</p>
+              <p class="text-sm text-sumi/85 leading-relaxed mb-4">
+                ご家族・ご友人グループや観光での思い出づくりに。3〜4名様でのアトリエ貸切や、不定期営業日以外の日程リクエストも柔軟にご相談いただけます。
+              </p>
+            </div>
+            <div class="pt-4 border-t border-borderBeige">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-sumi/75">料金体系</span>
+                <div>
+                  <span class="font-serif text-base font-bold text-sumi">上記コース料金と同様</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-cedar font-semibold text-right mt-1">※貸切・日程リクエストはDMにて相談可</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- 工房用意ボディ一覧（素材代金） -->
+        <div class="menu-card bg-white rounded-2xl p-5 sm:p-6 border border-borderBeige shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-4">
+            <h3 class="font-serif text-base sm:text-lg font-bold text-sumi">ベース素材一覧（素材代金・税込）</h3>
+            <span class="text-xs text-sumi/75">お持ち込み ¥0 ／ 手ぶらでお越しの方も工房ボディを1点から購入可能</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div class="bg-washi rounded-xl p-3.5 border border-borderBeige text-center">
+              <span class="text-xs font-bold text-sumi block">アイテム持ち込み</span>
+              <span class="font-display text-2xl font-bold text-indigoInk mt-1 block">¥0</span>
+              <span class="text-[10px] text-sumi/65">綿100%・布製品推奨</span>
+            </div>
+            <div class="bg-washi rounded-xl p-3.5 border border-borderBeige text-center">
+              <span class="text-xs font-bold text-sumi block">サコッシュ</span>
+              <span class="font-display text-2xl font-bold text-vermilion mt-1 block">¥500</span>
+              <span class="text-[10px] text-sumi/65">コットン・ナチュラル</span>
+            </div>
+            <div class="bg-washi rounded-xl p-3.5 border border-borderBeige text-center">
+              <span class="text-xs font-bold text-sumi block">トートバッグ</span>
+              <span class="font-display text-2xl font-bold text-vermilion mt-1 block">¥700</span>
+              <span class="text-[10px] text-sumi/65">A4収納・キャンバス</span>
+            </div>
+            <div class="bg-washi rounded-xl p-3.5 border border-borderBeige text-center">
+              <span class="text-xs font-bold text-sumi block">Tシャツ</span>
+              <span class="font-display text-2xl font-bold text-vermilion mt-1 block">¥1,200</span>
+              <span class="text-[10px] text-sumi/65">ヘビーウェイト・S〜XL</span>
+            </div>
+            <div class="bg-washi rounded-xl p-3.5 border border-borderBeige text-center col-span-2 sm:col-span-1">
+              <span class="text-xs font-bold text-sumi block">パーカー</span>
+              <span class="font-display text-2xl font-bold text-vermilion mt-1 block">¥2,800</span>
+              <span class="text-[10px] text-sumi/65">裏パイル・S〜XL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           2. 法人・店舗制作 (B2B)
+      ========================================================== -->
+      <section id="sec-b2b" class="menu-section">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-sumi pb-3 mb-6 gap-1">
+          <div>
+            <span class="font-display text-xs tracking-[0.2em] text-vermilion font-bold uppercase block">02 / B2B SMALL-LOT PRODUCTION</span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-sumi mt-0.5">法人・店舗制作 (B2B)</h2>
+          </div>
+          <span class="text-xs sm:text-sm text-indigoInk font-semibold">小ロット10枚〜対応・不定期営業日以外の日程相談可</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <!-- 店舗ユニフォーム制作（10枚〜） -->
+          <article class="menu-card bg-white rounded-2xl p-6 border border-borderBeige shadow-sm flex flex-col justify-between hover:border-indigoInk/40 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigoInk/10 text-indigoInk text-xs font-bold">10枚〜小ロット対応</span>
+                <span class="text-xs text-cedar font-semibold">リピート増刷割安</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-sumi">店舗ユニフォーム制作</h3>
+              <p class="font-display text-[11px] tracking-wider text-cedar font-semibold uppercase mb-3">Shop Uniforms (10枚〜)</p>
+              <p class="text-sm text-sumi/85 leading-relaxed mb-4">
+                Tシャツ・エプロン・パーカーへのロゴプリント。カフェ・飲食店・美容室・ショップ向けに、洗濯耐久性の高いプロ仕様インクで1枚ずつ丁寧に手刷りします。
+              </p>
+            </div>
+            <div class="pt-4 border-t border-borderBeige">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-sumi/75">初回製版代 ¥4,000/版</span>
+                <div>
+                  <span class="font-display text-2xl font-bold text-vermilion">¥1,800〜</span>
+                  <span class="text-xs text-sumi/75">/ 枚</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- オリジナルノベルティ・物販グッズ（10個〜） -->
+          <article class="menu-card bg-white rounded-2xl p-6 border border-borderBeige shadow-sm flex flex-col justify-between hover:border-indigoInk/40 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigoInk/10 text-indigoInk text-xs font-bold">10個〜対応</span>
+                <span class="text-xs text-cedar font-semibold">布・紙パッケージ対応</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-sumi">オリジナルノベルティ・物販グッズ</h3>
+              <p class="font-display text-[11px] tracking-wider text-cedar font-semibold uppercase mb-3">Original Goods (10個〜)</p>
+              <p class="text-sm text-sumi/85 leading-relaxed mb-4">
+                トートバッグ・巾着・手ぬぐい・紙パッケージ等へのワンポイント・ロゴ印刷。周年記念品や店舗オリジナル物販の小ロット制作に最適です。
+              </p>
+            </div>
+            <div class="pt-4 border-t border-borderBeige">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-sumi/75">初回製版代 ¥4,000/版</span>
+                <div>
+                  <span class="font-display text-2xl font-bold text-vermilion">¥950〜</span>
+                  <span class="text-xs text-sumi/75">/ 個</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 出張ワークショップ・イベントライブプリント -->
+          <article class="menu-card bg-white rounded-2xl p-6 border border-borderBeige shadow-sm flex flex-col justify-between hover:border-indigoInk/40 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-md bg-indigoInk/10 text-indigoInk text-xs font-bold">札幌近郊対応</span>
+                <span class="text-xs text-cedar font-semibold">機材持込・実演</span>
+              </div>
+              <h3 class="font-serif text-xl font-bold text-sumi">出張ワークショップ・ライブプリント</h3>
+              <p class="font-display text-[11px] tracking-wider text-cedar font-semibold uppercase mb-3">Pop-up Live Printing</p>
+              <p class="text-sm text-sumi/85 leading-relaxed mb-4">
+                商業施設・マルシェ・各種イベント会場へクリーンな専用機材を持ち込み、来場者がその場で限定デザインを刷れるライブプリントブースを出店します。
+              </p>
+            </div>
+            <div class="pt-4 border-t border-borderBeige">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-sumi/75">機材持込・出張実演</span>
+                <div>
+                  <span class="font-display text-2xl font-bold text-indigoInk">¥35,000〜</span>
+                  <span class="text-xs text-sumi/75">/ 式</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ボリュームディスカウント＆オプション -->
+        <div class="menu-card bg-white rounded-2xl p-5 sm:p-6 border border-borderBeige shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3.5 bg-washi rounded-xl p-4 border border-borderBeige">
+            <span class="px-2.5 py-1 rounded bg-vermilion text-white text-xs font-bold shrink-0">数量割引</span>
+            <div>
+              <h4 class="font-serif font-bold text-sumi text-sm sm:text-base">ロット数量に応じたボリューム割引</h4>
+              <p class="text-xs text-sumi/80 mt-1 leading-relaxed">
+                30枚以上のご注文で単価<strong>10%OFF</strong>、50枚以上のご注文で単価<strong>15%OFF</strong>。リピート増刷時は保管中の版を使用するため初回製版代が不要です。
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3.5 bg-washi rounded-xl p-4 border border-borderBeige">
+            <span class="px-2.5 py-1 rounded bg-indigoInk text-white text-xs font-bold shrink-0">+¥250/枚</span>
+            <div>
+              <h4 class="font-serif font-bold text-sumi text-sm sm:text-base">襟元オリジナルネームプリント</h4>
+              <p class="text-xs text-sumi/80 mt-1 leading-relaxed">
+                首元内側へブランドロゴやサイズ表記を直接シルクスクリーン印刷し、本格アパレルブランドのようなクリーンな仕上がりを実現します。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           3. 予約枠・営業案内 (3-Session Booking Schedule)
+      ========================================================== -->
+      <section id="sec-guide" class="menu-section">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-sumi pb-3 mb-6 gap-1">
+          <div>
+            <span class="font-display text-xs tracking-[0.2em] text-vermilion font-bold uppercase block">03 / BOOKING SCHEDULE & OPERATING INFO</span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-sumi mt-0.5">予約枠・営業案内（不定期営業・完全予約制）</h2>
+          </div>
+          <span class="text-xs sm:text-sm text-indigoInk font-semibold">1日3部制・各枠 最大4名（2組まで）</span>
+        </div>
+
+        <div class="menu-card bg-white rounded-2xl p-6 border border-borderBeige shadow-sm space-y-5">
+          <!-- 不定期営業・完全予約制の案内 -->
+          <div class="bg-washiSoft/90 rounded-xl p-4 sm:p-5 border border-indigoInk/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-vermilion text-white text-xs font-bold">不定期営業・完全予約制</span>
+                <h3 class="font-serif font-bold text-sumi text-base">営業日カレンダー・DM予約について</h3>
+              </div>
+              <p class="text-xs sm:text-sm text-sumi/85 leading-relaxed">
+                当工房は<strong>不定期営業・完全予約制</strong>です。最新のオープン日程は<strong>公式Instagram・予約カレンダーにて随時公開</strong>しております。B2B制作・グループ貸切は公開日以外の日程リクエストもDMよりお気軽にご相談ください。
+              </p>
+            </div>
+            <div class="shrink-0 bg-white px-4 py-3 rounded-xl border border-borderBeige text-center">
+              <span class="text-[11px] text-cedar font-bold block">1枠あたりの定員</span>
+              <span class="font-serif text-base font-bold text-sumi">最大 4名（2組まで）</span>
+            </div>
+          </div>
+
+          <!-- 1日3部制タイムスケジュール -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-washi rounded-xl p-5 border border-borderBeige">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-indigoInk text-white text-xs font-bold">第1部（午前枠）</span>
+                <span class="text-[11px] text-cedar font-semibold">Morning Slot</span>
+              </div>
+              <p class="font-display text-2xl font-bold text-sumi tracking-tight">10:30 – 12:30</p>
+              <p class="text-xs text-sumi/80 mt-2">観光の合間・午前中の制作に</p>
+            </div>
+
+            <div class="bg-washi rounded-xl p-5 border-2 border-vermilion/45">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-vermilion text-white text-xs font-bold">第2部（午後1枠）</span>
+                <span class="text-[11px] text-vermilion font-bold">人気メイン枠</span>
+              </div>
+              <p class="font-display text-2xl font-bold text-sumi tracking-tight">13:30 – 15:30</p>
+              <p class="text-xs text-sumi/80 mt-2">ランチ後に立ち寄りやすいメイン枠</p>
+            </div>
+
+            <div class="bg-washi rounded-xl p-5 border border-borderBeige">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-0.5 rounded bg-indigoInk text-white text-xs font-bold">第3部（夕方枠）</span>
+                <span class="text-[11px] text-cedar font-semibold">Evening Slot</span>
+              </div>
+              <p class="font-display text-2xl font-bold text-sumi tracking-tight">16:30 – 18:30</p>
+              <p class="text-xs text-sumi/80 mt-2">お仕事帰り・観光の締めに</p>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-borderBeige flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sumi/85">
+            <p>※各枠の間に<strong>60分の換気・清掃・版洗浄タイム</strong>を設け、常にクリーンな制作環境を維持しています。</p>
+            <span class="text-indigoInk font-bold shrink-0">既存版体験：当日1時間前まで / オリジナル製版：前日18時まで予約</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           4. インタラクティブ料金シミュレーター＆必須免責同意
+      ========================================================== -->
+      <section id="simulator-section" class="no-print space-y-5">
+        <!-- シミュレーター直前の必須確認リマインダー -->
+        <div class="bg-vermilion/10 border-2 border-vermilion/60 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-0.5 rounded bg-vermilion text-white text-[11px] font-bold shrink-0 mt-0.5">必須確認</span>
+            <p class="text-xs sm:text-sm text-sumi font-medium leading-relaxed">
+              お持ち込みアイテムは<strong>綿100%・キャンバス地推奨（ナイロン・撥水加工・段差NG）</strong>です。体験時の仕上がりズレ・滲みによる補償はいたしかねますので、高額品・一点物のお持ち込みはご遠慮ください。
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white border-2 border-sumi/30 rounded-2xl p-6 sm:p-8 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-borderBeige pb-4 mb-6 gap-3">
+            <div>
+              <span class="text-xs font-display tracking-widest text-vermilion font-bold uppercase">04 / INTERACTIVE PRICE CALCULATOR</span>
+              <h2 class="font-serif text-xl sm:text-2xl font-bold text-sumi">料金シミュレーター＆予約用メモ作成</h2>
+              <p class="text-xs text-sumi/75 mt-1">プラン・色数・素材・時間帯を選択し、免責事項への同意チェックを入れると予約メモをコピーできます。</p>
+            </div>
+
+            <!-- モード切替タブ -->
+            <div class="inline-flex rounded-xl bg-washiSoft p-1 border border-borderBeige self-start sm:self-auto" role="group" aria-label="シミュレーターモード切替">
+              <button type="button" id="mode-workshop" onclick="setSimMode('workshop')" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-sumi text-white shadow-sm">
+                制作体験 (Workshop)
+              </button>
+              <button type="button" id="mode-b2b" onclick="setSimMode('b2b')" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all text-sumi hover:bg-white/70">
+                法人・店舗制作 (B2B)
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- 左側：入力フォーム（7カラム） -->
+            <div class="lg:col-span-7 space-y-4">
+
+              <!-- ワークショップ体験モード -->
+              <div id="ws-form-fields" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                    <label for="ws-course" class="block text-xs font-bold text-indigoInk mb-2">1. コース選択（基本版代）</label>
+                    <select id="ws-course" onchange="calculateEstimate()" class="w-full p-2.5 rounded-xl border border-borderBeige bg-white text-sm font-medium text-sumi focus:outline-none focus:border-indigoInk">
+                      <option value="1200" data-name="マイデザイン制作コース（オリジナル製版）" selected>オリジナル製版（¥1,200）</option>
+                      <option value="600" data-name="クイック刷り体験（既存デザイン版利用）">既存デザイン版利用（¥600）</option>
+                    </select>
+                  </div>
+
+                  <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                    <label for="ws-slot" class="block text-xs font-bold text-indigoInk mb-2">2. ご希望時間帯（予約枠）</label>
+                    <select id="ws-slot" onchange="calculateEstimate()" class="w-full p-2.5 rounded-xl border border-borderBeige bg-white text-sm font-medium text-sumi focus:outline-none focus:border-indigoInk">
+                      <option value="第1部（10:30 – 12:30）">第1部（10:30 – 12:30）</option>
+                      <option value="第2部（13:30 – 15:30）" selected>第2部（13:30 – 15:30）</option>
+                      <option value="第3部（16:30 – 18:30）">第3部（16:30 – 18:30）</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                    <label for="ws-colors" class="block text-xs font-bold text-indigoInk mb-2">3. プリント色数（1色あたり ¥200）</label>
+                    <select id="ws-colors" onchange="calculateEstimate()" class="w-full p-2.5 rounded-xl border border-borderBeige bg-white text-sm font-medium text-sumi focus:outline-none focus:border-indigoInk">
+                      <option value="1">1色（+¥200 / 点）</option>
+                      <option value="2">2色（+¥400 / 点）</option>
+                      <option value="3">3色（+¥600 / 点）</option>
+                      <option value="4">4色（+¥800 / 点）</option>
+                    </select>
+                  </div>
+
+                  <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                    <label for="ws-material" class="block text-xs font-bold text-indigoInk mb-2">4. ベース素材（別売 / 持ち込み¥0）</label>
+                    <select id="ws-material" onchange="calculateEstimate()" class="w-full p-2.5 rounded-xl border border-borderBeige bg-white text-sm font-medium text-sumi focus:outline-none focus:border-indigoInk">
+                      <option value="0" data-name="アイテム持ち込み">持ち込み（¥0）</option>
+                      <option value="500" data-name="サコッシュ">サコッシュ（¥500）</option>
+                      <option value="700" data-name="トートバッグ" selected>トートバッグ（¥700）</option>
+                      <option value="1200" data-name="Tシャツ">Tシャツ（¥1,200）</option>
+                      <option value="2800" data-name="パーカー">パーカー（¥2,800）</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- 人数・点数ステッパー（1〜4名） -->
+                <div class="bg-washi p-4 rounded-xl border border-borderBeige flex items-center justify-between">
+                  <div>
+                    <span class="block text-xs font-bold text-indigoInk">5. 人数・点数（1枠 最大4名まで）</span>
+                    <span class="text-[11px] text-sumi/65">各人の版代・プリント代・素材代を合算します</span>
+                  </div>
+                  <div class="inline-flex items-center bg-white border border-borderBeige rounded-xl overflow-hidden">
+                    <button type="button" onclick="stepWsQty(-1)" class="px-3.5 py-2 text-sumi font-bold hover:bg-washiSoft transition" aria-label="人数を減らす">−</button>
+                    <span id="ws-qty-display" class="px-4 py-1.5 font-display font-bold text-vermilion text-base min-w-[2.75rem] text-center">1</span>
+                    <button type="button" onclick="stepWsQty(1)" class="px-3.5 py-2 text-sumi font-bold hover:bg-washiSoft transition" aria-label="人数を増やす">＋</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 法人・店舗オーダー（B2B）モード -->
+              <div id="b2b-form-fields" class="hidden space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                    <label for="b2b-item" class="block text-xs font-bold text-indigoInk mb-2">1. 制作アイテム（1色プリント込目安）</label>
+                    <select id="b2b-item" onchange="calculateEstimate()" class="w-full p-2.5 rounded-xl border border-borderBeige bg-white text-sm font-medium text-sumi focus:outline-none focus:border-indigoInk">
+                      <option value="1800" data-name="店舗ユニフォーム（Tシャツ・エプロン等）">店舗ユニフォーム（¥1,800 / 枚）</option>
+                      <option value="950" data-name="オリジナルノベルティ・物販グッズ">ノベルティ・物販グッズ（¥950 / 個）</option>
+                      <option value="650" data-name="持ち込みボディ制作">持ち込みボディ制作（¥650 / 枚）</option>
+                    </select>
+                  </div>
+
+                  <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                    <label for="b2b-colors" class="block text-xs font-bold text-indigoInk mb-2">2. プリント色数（2色目以降 +¥350/枚）</label>
+                    <select id="b2b-colors" onchange="calculateEstimate()" class="w-full p-2.5 rounded-xl border border-borderBeige bg-white text-sm font-medium text-sumi focus:outline-none focus:border-indigoInk">
+                      <option value="1">1色プリント</option>
+                      <option value="2">2色プリント（+¥350 / 枚）</option>
+                      <option value="3">3色プリント（+¥700 / 枚）</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- 制作枚数スライダー＆数値 -->
+                <div class="bg-washi p-4 rounded-xl border border-borderBeige">
+                  <div class="flex items-center justify-between mb-2">
+                    <label for="b2b-qty-range" class="text-xs font-bold text-indigoInk">3. 制作数量（小ロット 10〜100枚）</label>
+                    <div class="flex items-center gap-1.5">
+                      <input type="number" id="b2b-qty-num" min="10" max="100" value="15" oninput="syncB2bQty('num')" class="w-20 px-2.5 py-1 text-right font-display font-bold text-vermilion bg-white border border-borderBeige rounded-lg text-base">
+                      <span class="text-xs font-bold text-sumi">枚（個）</span>
+                    </div>
+                  </div>
+                  <input type="range" id="b2b-qty-range" min="10" max="100" value="15" oninput="syncB2bQty('range')" class="w-full accent-vermilion cursor-pointer">
+                  <div class="flex justify-between text-[11px] text-sumi/60 mt-1">
+                    <span>10枚（最小ロット）</span>
+                    <span>30枚（10%OFF）</span>
+                    <span>50枚（15%OFF）</span>
+                    <span>100枚</span>
+                  </div>
+                </div>
+
+                <!-- オプション -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label class="bg-washi p-4 rounded-xl border border-borderBeige flex items-start gap-3 cursor-pointer hover:border-indigoInk/40 transition">
+                    <input type="checkbox" id="b2b-repeat" onchange="calculateEstimate()" class="mt-0.5 w-4 h-4 rounded text-vermilion focus:ring-vermilion">
+                    <div class="text-xs">
+                      <span class="font-bold text-indigoInk block">リピート増刷（初回製版代 ¥0）</span>
+                      <span class="text-sumi/70 text-[11px]">保管版利用時は製版代 ¥4,000/版 が不要</span>
+                    </div>
+                  </label>
+
+                  <label class="bg-washi p-4 rounded-xl border border-borderBeige flex items-start gap-3 cursor-pointer hover:border-indigoInk/40 transition">
+                    <input type="checkbox" id="b2b-necktag" onchange="calculateEstimate()" class="mt-0.5 w-4 h-4 rounded text-vermilion focus:ring-vermilion">
+                    <div class="text-xs">
+                      <span class="font-bold text-indigoInk block">襟元ネームプリント（+¥250 / 枚）</span>
+                      <span class="text-sumi/70 text-[11px]">首元内側へのオリジナルロゴ印刷</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 必須：免責事項・お持ち込み規定 同意チェックボックス -->
+              <div id="disclaimer-box" class="bg-vermilion/5 border-2 border-vermilion/50 rounded-xl p-4 transition-all">
+                <label for="agree-disclaimer" class="flex items-start gap-3 cursor-pointer select-none">
+                  <input type="checkbox" id="agree-disclaimer" onchange="toggleDisclaimerAgreement()" class="mt-0.5 w-5 h-5 rounded border-vermilion text-vermilion focus:ring-vermilion cursor-pointer shrink-0">
+                  <div class="text-xs sm:text-sm">
+                    <span class="font-bold text-vermilion block">上記の免責事項・お持ち込み規定を確認し、同意しました（必須）</span>
+                    <span class="text-[11px] text-sumi/80 block mt-0.5">
+                      ※チェックを入れると右側の「予約メモをコピー」ボタンが有効になります。
+                    </span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- 右側：リアルタイム内訳＆予約メモコピー（5カラム） -->
+            <div class="lg:col-span-5 bg-sumi text-white rounded-2xl p-6 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between border-b border-white/15 pb-3 mb-4">
+                  <div>
+                    <span class="text-[11px] font-display tracking-widest text-cedarLight uppercase block">ESTIMATED BREAKDOWN</span>
+                    <h3 class="font-serif text-base font-bold">お見積り内訳（税込）</h3>
+                  </div>
+                  <span id="sim-badge" class="px-2.5 py-1 rounded bg-white/10 text-xs font-medium">制作体験</span>
+                </div>
+
+                <dl id="sim-breakdown-list" class="space-y-2.5 text-sm">
+                  <!-- JavaScriptでリアルタイム描画 -->
+                </dl>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/20">
+                <div class="flex items-baseline justify-between">
+                  <span class="text-xs text-white/80">合計金額目安（税込）</span>
+                  <div class="flex items-baseline gap-1 bg-white text-vermilion px-3.5 py-1.5 rounded-xl shadow-sm">
+                    <span class="text-sm font-serif font-bold">¥</span>
+                    <span id="sim-total" class="font-display text-3xl font-bold tracking-tight">2,100</span>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center mt-2.5 text-xs text-white/80">
+                  <span>1点（1枚）あたりの目安単価</span>
+                  <span id="sim-unit-avg" class="font-display font-bold text-white text-sm">¥2,100</span>
+                </div>
+
+                <!-- 予約メモをコピーボタン（未同意時はロック・グレーアウト） -->
+                <button type="button" id="copy-memo-btn" onclick="copyEstimateSummary()" disabled class="mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/15 text-white/45 border border-white/15 text-xs sm:text-sm font-bold cursor-not-allowed transition-all">
+                  <svg id="copy-btn-icon" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                  <span id="copy-btn-label">免責事項に同意するとコピーできます</span>
+                </button>
+                <p id="copy-helper-text" class="text-[11px] text-amber-300/90 text-center mt-2">
+                  ※左側の「免責事項・お持ち込み規定に同意しました」にチェックを入れてください
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="mt-12 pt-8 border-t border-borderBeige">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <p class="font-display font-bold text-sumi text-base tracking-wide">
+            maykreen [MAYKscREEN] | SILKSCREEN STUDIO SAPPORO
+          </p>
+          <p class="text-xs text-sumi/75 mt-1">
+            北海道札幌市（Sapporo, Hokkaido）｜ 不定期営業・完全予約制シルクスクリーン工房（営業日カレンダー・ご予約は公式Instagram DMより）
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-borderBeige text-indigoInk font-medium">不定期営業・完全予約制</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-borderBeige text-indigoInk font-medium">手ぶら参加OK</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-borderBeige text-indigoInk font-medium">小ロット10枚〜対応</span>
+        </div>
+      </div>
+      <p class="text-[11px] text-sumi/60 mt-4">
+        ※表示価格はすべて税込です。お持ち込みアイテムは事前に免責規定をご確認のうえご予約ください。
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- インタラクティブ機能スクリプト -->
+  <script>
+    let currentMode = 'workshop';
+    let wsQty = 1;
+    let latestSummaryText = '';
+
+    // カテゴリー切り替えタブ
+    function filterCategory(category) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-sumi', 'text-white', 'shadow-sm', 'font-bold');
+        btn.classList.add('text-sumi', 'hover:bg-washiSoft', 'font-medium');
+      });
+
+      const activeBtn = document.getElementById('tab-' + category);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-sumi', 'hover:bg-washiSoft', 'font-medium');
+        activeBtn.classList.add('bg-sumi', 'text-white', 'shadow-sm', 'font-bold');
+      }
+
+      const sections = {
+        workshop: document.getElementById('sec-workshop'),
+        b2b: document.getElementById('sec-b2b'),
+        guide: document.getElementById('sec-guide')
+      };
+
+      Object.entries(sections).forEach(([key, sec]) => {
+        if (category === 'all' || key === category) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+    }
+
+    // 料金シミュレーターへスムーススクロール
+    function jumpToSimulator() {
+      const simEl = document.getElementById('simulator-section');
+      if (simEl) {
+        simEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // シミュレーターモード切替（制作体験 / 法人B2B）
+    function setSimMode(mode) {
+      currentMode = mode;
+      const btnWs = document.getElementById('mode-workshop');
+      const btnB2b = document.getElementById('mode-b2b');
+      const wsFields = document.getElementById('ws-form-fields');
+      const b2bFields = document.getElementById('b2b-form-fields');
+
+      if (mode === 'workshop') {
+        btnWs.className = 'px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-sumi text-white shadow-sm';
+        btnB2b.className = 'px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all text-sumi hover:bg-white/70';
+        wsFields.classList.remove('hidden');
+        b2bFields.classList.add('hidden');
+        document.getElementById('sim-badge').textContent = '制作体験';
+      } else {
+        btnB2b.className = 'px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-sumi text-white shadow-sm';
+        btnWs.className = 'px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all text-sumi hover:bg-white/70';
+        b2bFields.classList.remove('hidden');
+        wsFields.classList.add('hidden');
+        document.getElementById('sim-badge').textContent = '法人・店舗 (B2B)';
+      }
+
+      calculateEstimate();
+    }
+
+    // ワークショップ人数ステッパー（1〜4名）
+    function stepWsQty(delta) {
+      wsQty = Math.min(4, Math.max(1, wsQty + delta));
+      document.getElementById('ws-qty-display').textContent = wsQty;
+      calculateEstimate();
+    }
+
+    // B2B数量スライダー＆数値入力同期（10〜100）
+    function syncB2bQty(source) {
+      const rangeEl = document.getElementById('b2b-qty-range');
+      const numEl = document.getElementById('b2b-qty-num');
+      let val = parseInt(source === 'range' ? rangeEl.value : numEl.value, 10);
+
+      if (isNaN(val) || val < 10) val = 10;
+      if (val > 100) val = 100;
+
+      rangeEl.value = val;
+      numEl.value = val;
+      calculateEstimate();
+    }
+
+    // 必須免責同意チェックボックスの状態切り替え
+    function toggleDisclaimerAgreement() {
+      const isAgreed = document.getElementById('agree-disclaimer').checked;
+      const copyBtn = document.getElementById('copy-memo-btn');
+      const btnIcon = document.getElementById('copy-btn-icon');
+      const btnLabel = document.getElementById('copy-btn-label');
+      const helperText = document.getElementById('copy-helper-text');
+      const disclaimerBox = document.getElementById('disclaimer-box');
+
+      if (isAgreed) {
+        copyBtn.disabled = false;
+        copyBtn.className = 'mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-vermilion hover:bg-vermilion/90 text-white text-xs sm:text-sm font-bold cursor-pointer transition-all shadow-sm';
+        btnIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>';
+        btnLabel.textContent = '予約メモをコピー';
+        helperText.textContent = 'コピーした予約メモを公式InstagramのDM等に貼り付けてお送りください';
+        helperText.className = 'text-[11px] text-white/75 text-center mt-2';
+        disclaimerBox.className = 'bg-indigoInk/5 border-2 border-indigoInk/45 rounded-xl p-4 transition-all';
+      } else {
+        copyBtn.disabled = true;
+        copyBtn.className = 'mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/15 text-white/45 border border-white/15 text-xs sm:text-sm font-bold cursor-not-allowed transition-all';
+        btnIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>';
+        btnLabel.textContent = '免責事項に同意するとコピーできます';
+        helperText.textContent = '※左側の「免責事項・お持ち込み規定に同意しました」にチェックを入れてください';
+        helperText.className = 'text-[11px] text-amber-300/90 text-center mt-2';
+        disclaimerBox.className = 'bg-vermilion/5 border-2 border-vermilion/50 rounded-xl p-4 transition-all';
+      }
+
+      calculateEstimate();
+    }
+
+    // リアルタイムお見積り計算＆予約用メモ生成
+    function calculateEstimate() {
+      let grandTotal = 0;
+      let qty = 1;
+      const items = [];
+
+      if (currentMode === 'workshop') {
+        qty = wsQty;
+        const courseSel = document.getElementById('ws-course');
+        const screenFee = parseInt(courseSel.value, 10) || 1200;
+        const courseName = courseSel.options[courseSel.selectedIndex]?.dataset?.name || '体験コース';
+
+        const slotName = document.getElementById('ws-slot').value;
+        const colors = parseInt(document.getElementById('ws-colors').value, 10) || 1;
+
+        const matSel = document.getElementById('ws-material');
+        const matPrice = parseInt(matSel.value, 10) || 0;
+        const matName = matSel.options[matSel.selectedIndex]?.dataset?.name || '素材';
+
+        const totalScreen = screenFee * qty;
+        const totalPrint = (200 * colors) * qty;
+        const totalMat = matPrice * qty;
+
+        grandTotal = totalScreen + totalPrint + totalMat;
+
+        items.push({
+          label: `基本版代（¥${screenFee.toLocaleString('ja-JP')} × ${qty}版）`,
+          amount: `¥${totalScreen.toLocaleString('ja-JP')}`
+        });
+        items.push({
+          label: `プリント代（${colors}色 × ¥200 × ${qty}点）`,
+          amount: `¥${totalPrint.toLocaleString('ja-JP')}`
+        });
+        items.push({
+          label: `素材代金：${matName}（¥${matPrice.toLocaleString('ja-JP')} × ${qty}点）`,
+          amount: `¥${totalMat.toLocaleString('ja-JP')}`
+        });
+
+        latestSummaryText =
+`【maykreen 制作体験 予約・お見積りメモ】
+・希望コース：${courseName}
+・希望時間帯：${slotName}
+・プリント色数：${colors}色
+・ベース素材：${matName}
+・人数 / 点数：${qty}名（点）
+・お見積り合計：¥${grandTotal.toLocaleString('ja-JP')}（税込 / 1点あたり ¥${Math.round(grandTotal / qty).toLocaleString('ja-JP')}）
+[免責事項・持ち込み規定：同意済]`;
+
+      } else {
+        qty = parseInt(document.getElementById('b2b-qty-num').value, 10) || 10;
+        const itemSel = document.getElementById('b2b-item');
+        const baseUnit = parseInt(itemSel.value, 10) || 1800;
+        const itemName = itemSel.options[itemSel.selectedIndex]?.dataset?.name || '店舗ユニフォーム';
+
+        const colors = parseInt(document.getElementById('b2b-colors').value, 10) || 1;
+        const extraColorUnit = (colors - 1) * 350;
+        const isRepeat = document.getElementById('b2b-repeat').checked;
+        const hasNeckTag = document.getElementById('b2b-necktag').checked;
+
+        let discountRate = 0;
+        if (qty >= 50) discountRate = 0.15;
+        else if (qty >= 30) discountRate = 0.10;
+
+        const rawUnit = baseUnit + extraColorUnit + (hasNeckTag ? 250 : 0);
+        const discountedUnit = Math.round(rawUnit * (1 - discountRate));
+        const setupFee = isRepeat ? 0 : (4000 * colors);
+
+        const totalItemCost = discountedUnit * qty;
+        grandTotal = totalItemCost + setupFee;
+
+        items.push({
+          label: `${itemName}（¥${baseUnit.toLocaleString('ja-JP')} × ${qty}枚）`,
+          amount: `¥${(baseUnit * qty).toLocaleString('ja-JP')}`
+        });
+        if (colors > 1) {
+          items.push({
+            label: `多色追加プリント（+${colors - 1}色 × ¥350 × ${qty}枚）`,
+            amount: `¥${(extraColorUnit * qty).toLocaleString('ja-JP')}`
+          });
+        }
+        if (hasNeckTag) {
+          items.push({
+            label: `襟元オリジナルネームプリント（¥250 × ${qty}枚）`,
+            amount: `¥${(250 * qty).toLocaleString('ja-JP')}`
+          });
+        }
+        if (discountRate > 0) {
+          const saved = (rawUnit * qty) - totalItemCost;
+          items.push({
+            label: `数量ボリューム割引（${Math.round(discountRate * 100)}%OFF）`,
+            amount: `-¥${saved.toLocaleString('ja-JP')}`
+          });
+        }
+        items.push({
+          label: isRepeat ? '製版代（リピート増刷のため無料）' : `初回製版代（${colors}版 × ¥4,000）`,
+          amount: `¥${setupFee.toLocaleString('ja-JP')}`
+        });
+
+        latestSummaryText =
+`【maykreen 法人・店舗制作（B2B）お見積りメモ】
+・制作アイテム：${itemName}
+・プリント色数：${colors}色${hasNeckTag ? '（襟元ネームプリントあり）' : ''}
+・制作数量：${qty}枚（個）${discountRate > 0 ? `（${Math.round(discountRate * 100)}%OFF適用）` : ''}
+・製版条件：${isRepeat ? 'リピート増刷（製版代無料）' : `新規製版（${colors}版）`}
+・お見積り合計：¥${grandTotal.toLocaleString('ja-JP')}（税込 / 1枚あたり目安 ¥${Math.round(grandTotal / qty).toLocaleString('ja-JP')}）
+[免責事項・持ち込み規定：同意済]`;
+      }
+
+      const avgUnit = Math.round(grandTotal / qty);
+
+      const listEl = document.getElementById('sim-breakdown-list');
+      listEl.innerHTML = items.map(item => `
+        <div class="flex justify-between items-center text-white/90">
+          <dt class="text-xs pr-2">${item.label}</dt>
+          <dd class="font-display font-semibold shrink-0">${item.amount}</dd>
+        </div>
+      `).join('');
+
+      document.getElementById('sim-total').textContent = grandTotal.toLocaleString('ja-JP');
+      document.getElementById('sim-unit-avg').textContent = `¥${avgUnit.toLocaleString('ja-JP')} / ${currentMode === 'workshop' ? '点' : '枚'}`;
+    }
+
+    // 予約用メモをクリップボードにコピー（同意必須）
+    function copyEstimateSummary() {
+      const isAgreed = document.getElementById('agree-disclaimer').checked;
+      if (!isAgreed) {
+        showToast('先に「免責事項・お持ち込み規定に同意しました」にチェックを入れてください');
+        return;
+      }
+
+      const textarea = document.createElement('textarea');
+      textarea.value = latestSummaryText;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+        showToast('予約メモ（免責事項同意済）をクリップボードにコピーしました');
+      } catch (err) {
+        showToast('コピーに失敗しました。画面の内容をご確認ください');
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    // トースト通知表示
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast-msg');
+      const textEl = document.getElementById('toast-text');
+      textEl.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3200);
+    }
+
+    // 初期化
+    window.addEventListener('DOMContentLoaded', () => {
+      setSimMode('workshop');
+      toggleDisclaimerAgreement();
+    });
+  </script>
+</body>
+</html>
